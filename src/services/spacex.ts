@@ -35,9 +35,11 @@ export const getLatestLaunches = async () => {
       },
     }),
   });
-  console.log(res)
+
 
   const { docs: launches } = (await res.json()) as SpaceXRespose;
+
+
   return launches
 
 
