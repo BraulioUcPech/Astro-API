@@ -2,6 +2,10 @@
 import { getLatestLaunchBy, getLatestLaunches } from "../../services/spacex";
 import Layout from "../../layouts/Layout.astro";
 
+export const prerender = false //esto es para servidor.
+//cookiies
+
+
 const { id } = Astro.params;
 
 let launch;
