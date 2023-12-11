@@ -22,8 +22,14 @@ const { docs: launches } = (await res.json()) as SpaceXRespose;
 
 <div class="grid gap-8 sm:grib-cols-2 lg:grid-cols-3">
   {
-    launches.map((launch) => (
-      <CardLaunch />
+    launches.map(({id, links, details, flight_number:flightNumber, success}) => (
+      <CardLaunch 
+      id={id}
+      img={links.patch.small}
+      details={details}
+      flightNumber={flightNumber}
+      success={success}
+      />
     ))
   }
 </div>
