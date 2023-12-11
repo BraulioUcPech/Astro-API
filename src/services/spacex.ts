@@ -1,7 +1,7 @@
 import { type Doc, type SpaceXRespose } from "../types/api";
 
 export const getLatestLaunchBy = async ({ id }: { id: string }) => {
-  const res = await fetch(`https://api.spacexdata.com/v5/launches/${id}`)
+  const res = await fetch(`https://api.spacexdata.com/v5/launches/${id}`);
 
   if (!res.ok) {
     if (res.status === 404) {
@@ -15,11 +15,11 @@ export const getLatestLaunchBy = async ({ id }: { id: string }) => {
 
   const launch = (await res.json()) as Doc;
   return launch;
-}
+};
 
 
 export const getLatestLaunches = async () => {
-  
+
   const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
     method: "POST",
     headers: {
@@ -31,13 +31,14 @@ export const getLatestLaunches = async () => {
         sort: {
           date_unix: "asc",
         },
-        limit: 12,
+        limit: 20,
       },
     }),
   });
-  
+  console.log(res)
+
   const { docs: launches } = (await res.json()) as SpaceXRespose;
   return launches
-  
-    
-  }
+
+
+}
