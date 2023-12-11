@@ -1,23 +1,7 @@
 ---
-import { type SpaceXRespose } from "../types/api";
-import CardLaunch from "../components/CardLaunch.astro"
-const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    query: {},
-    option: {
-      sort: {
-        date_unix: "asc",
-      },
-      limit: 12,
-    },
-  }),
-});
 
-const { docs: launches } = (await res.json()) as SpaceXRespose;
+import CardLaunch from "../components/CardLaunch.astro"
+import {getLatestLaunches} from '../services/spacex'
 ---
 
 <div class="grid gap-8 sm:grib-cols-2 lg:grid-cols-3">
