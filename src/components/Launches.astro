@@ -1,6 +1,6 @@
 ---
-import {type SpaceXRespose} from '../types/api'
-
+import { type SpaceXRespose } from "../types/api";
+import CardLaunch from "../components/CardLaunch.astro"
 const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
   method: "POST",
   headers: {
@@ -17,11 +17,13 @@ const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
   }),
 });
 
-const {docs} = (await res.json()) as SpaceXRespose;
-
-
+const { docs: launches } = (await res.json()) as SpaceXRespose;
 ---
 
 <div class="grid gap-8 sm:grib-cols-2 lg:grid-cols-3">
-  
+  {
+    launches.map((launch) => (
+      <CardLaunch />
+    ))
+  }
 </div>
