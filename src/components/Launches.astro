@@ -2,6 +2,8 @@
 
 import CardLaunch from "../components/CardLaunch.astro"
 import {getLatestLaunches} from '../services/spacex'
+
+const launches = await getLatestLaunches()
 ---
 
 <div class="grid gap-8 sm:grib-cols-2 lg:grid-cols-3">
